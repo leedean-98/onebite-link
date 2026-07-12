@@ -7,6 +7,7 @@ type LinkContextType = {
   links: LinkItem[];
   addLink: (link: LinkItem) => void;
   deleteLink: (id: string) => void;
+  updateLink: (id: string, patch: Partial<Pick<LinkItem, "folderId" | "title" | "description">>) => void;
 };
 
 const LinkContext = createContext<LinkContextType | null>(null);
@@ -22,8 +23,15 @@ export function LinkProvider({ children }: { children: React.ReactNode }) {
     setLinks((prev) => prev.filter((l) => l.id !== id));
   }
 
+  function updateLink(
+    id: string,
+    patch: Partial<Pick<LinkItem, "folderId" | "title" | "description">>
+  ) {
+    setLinks((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
+  }
+
   return (
-    <LinkContext.Provider value={{ links, addLink, deleteLink }}>
+    <LinkContext.Provider value={{ links, addLink, deleteLink, updateLink }}>
       {children}
     </LinkContext.Provider>
   );
