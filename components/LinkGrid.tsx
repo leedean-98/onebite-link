@@ -1,7 +1,10 @@
-import { links } from "@/lib/data";
+"use client";
+
+import { useLinks } from "@/lib/LinkContext";
 import LinkCard from "./LinkCard";
 
 export default function LinkGrid({ folderId }: { folderId?: string }) {
+  const { links } = useLinks();
   const filtered = folderId
     ? links.filter((link) => link.folderId === folderId)
     : links;
