@@ -1,0 +1,40 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e3]:
+      - link "한입 링크" [ref=f1e4] [cursor=pointer]:
+        - /url: /
+      - link "+ 새 링크" [ref=f1e5] [cursor=pointer]:
+        - /url: /new
+        - generic [ref=f1e6]: +
+        - text: 새 링크
+    - generic [ref=f1e7]:
+      - complementary [ref=f1e8]:
+        - button "All" [ref=f1e9]
+        - generic [ref=f1e12]:
+          - paragraph [ref=f1e13]: 폴더
+          - button "개발" [ref=f1e14]
+          - button "디자인" [ref=f1e17]
+          - button "뉴스" [ref=f1e20]
+          - button "유튜브" [ref=f1e23]
+          - button "참고자료" [ref=f1e26]
+      - main [ref=f1e29]:
+        - generic [ref=f1e30]:
+          - heading "새 링크" [level=2] [ref=f1e31]
+          - paragraph [ref=f1e32]: 저장할 링크와 폴더를 입력해주세요
+        - generic [ref=f1e33]:
+          - generic [ref=f1e34]:
+            - generic [ref=f1e35]: 링크 URL
+            - textbox "링크 URL" [ref=f1e36]:
+              - /placeholder: https://example.com
+          - generic [ref=f1e37]:
+            - generic [ref=f1e38]: 폴더
+            - combobox "폴더" [ref=f1e39] [cursor=pointer]:
+              - option "폴더를 선택하세요" [disabled] [selected]
+              - option "개발"
+              - option "디자인"
+              - option "뉴스"
+              - option "유튜브"
+              - option "참고자료"
+          - button "저장" [ref=f1e40]
+  - button "Open Next.js Dev Tools" [ref=f1e46] [cursor=pointer]
+  - alert [ref=f1e50]

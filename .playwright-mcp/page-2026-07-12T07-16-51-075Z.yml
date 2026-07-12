@@ -1,0 +1,96 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]: 한입 링크
+      - button "+ 새 링크" [ref=e5]:
+        - generic [ref=e6]: +
+        - text: 새 링크
+    - generic [ref=e7]:
+      - complementary [ref=e8]:
+        - button "All" [ref=e9]
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: 폴더
+          - button "개발" [ref=e14]
+          - button "디자인" [ref=e17]
+          - button "뉴스" [ref=e20]
+          - button "유튜브" [ref=e23]
+          - button "참고자료" [ref=e26]
+      - main [ref=e29]:
+        - generic [ref=e30]:
+          - heading "전체 링크" [level=2] [ref=e31]
+          - paragraph [ref=e32]: 저장된 링크 8개
+        - generic [ref=e33]:
+          - article [ref=e34]:
+            - generic [ref=e35]:
+              - generic [ref=e36]: nextjs.org
+              - generic [ref=e38]: 개발
+            - generic [ref=e39]:
+              - heading "Next.js 공식 문서" [level=3] [ref=e40]
+              - paragraph [ref=e41]: Next.js 앱 라우터와 서버 컴포넌트에 대한 공식 가이드
+            - link "https://nextjs.org/docs" [ref=e42] [cursor=pointer]:
+              - /url: https://nextjs.org/docs
+          - article [ref=e43]:
+            - generic [ref=e44]:
+              - generic [ref=e45]: tailwindcss.com
+              - generic [ref=e47]: 개발
+            - generic [ref=e48]:
+              - heading "Tailwind CSS" [level=3] [ref=e49]
+              - paragraph [ref=e50]: 유틸리티 퍼스트 CSS 프레임워크로 빠르게 UI를 구축하세요
+            - link "https://tailwindcss.com" [ref=e51] [cursor=pointer]:
+              - /url: https://tailwindcss.com
+          - article [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: figma.com
+              - generic [ref=e56]: 디자인
+            - generic [ref=e57]:
+              - heading "Figma" [level=3] [ref=e58]
+              - paragraph [ref=e59]: 웹 기반 UI/UX 디자인 협업 도구
+            - link "https://figma.com" [ref=e60] [cursor=pointer]:
+              - /url: https://figma.com
+          - article [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: vercel.com
+              - generic [ref=e65]: 개발
+            - generic [ref=e66]:
+              - heading "Vercel" [level=3] [ref=e67]
+              - paragraph [ref=e68]: 프론트엔드 앱을 빠르게 배포하는 플랫폼
+            - link "https://vercel.com" [ref=e69] [cursor=pointer]:
+              - /url: https://vercel.com
+          - article [ref=e70]:
+            - generic [ref=e71]:
+              - generic [ref=e72]: news.ycombinator.com
+              - generic [ref=e74]: 뉴스
+            - generic [ref=e75]:
+              - heading "Hacker News" [level=3] [ref=e76]
+              - paragraph [ref=e77]: 스타트업과 개발자들을 위한 소셜 뉴스 사이트
+            - link "https://news.ycombinator.com" [ref=e78] [cursor=pointer]:
+              - /url: https://news.ycombinator.com
+          - article [ref=e79]:
+            - generic [ref=e80]:
+              - generic [ref=e81]: developer.mozilla.org
+              - generic [ref=e83]: 참고자료
+            - generic [ref=e84]:
+              - heading "MDN Web Docs" [level=3] [ref=e85]
+              - paragraph [ref=e86]: HTML, CSS, JavaScript에 대한 공신력 있는 레퍼런스
+            - link "https://developer.mozilla.org" [ref=e87] [cursor=pointer]:
+              - /url: https://developer.mozilla.org
+          - article [ref=e88]:
+            - generic [ref=e89]:
+              - generic [ref=e90]: dribbble.com
+              - generic [ref=e92]: 디자인
+            - generic [ref=e93]:
+              - heading "Dribbble" [level=3] [ref=e94]
+              - paragraph [ref=e95]: 세계 최고 디자이너들의 포트폴리오와 영감을 탐색하세요
+            - link "https://dribbble.com" [ref=e96] [cursor=pointer]:
+              - /url: https://dribbble.com
+          - article [ref=e97]:
+            - generic [ref=e98]:
+              - generic [ref=e99]: github.com
+              - generic [ref=e101]: 개발
+            - generic [ref=e102]:
+              - heading "GitHub" [level=3] [ref=e103]
+              - paragraph [ref=e104]: 오픈 소스 소프트웨어 개발 및 협업 플랫폼
+            - link "https://github.com" [ref=e105] [cursor=pointer]:
+              - /url: https://github.com
+  - button "Open Next.js Dev Tools" [ref=e111] [cursor=pointer]
+  - alert [ref=e115]

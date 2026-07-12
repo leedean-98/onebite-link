@@ -1,0 +1,67 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - banner [ref=f3e3]:
+      - link "한입 링크" [ref=f3e4] [cursor=pointer]:
+        - /url: /
+      - link "+ 새 링크" [ref=f3e5] [cursor=pointer]:
+        - /url: /new
+        - generic [ref=f3e6]: +
+        - text: 새 링크
+    - generic [ref=f3e7]:
+      - complementary [ref=f3e8]:
+        - link "All" [ref=f3e9] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f3e12]:
+          - paragraph [ref=f3e13]: 폴더
+          - link "개발" [ref=f3e14] [cursor=pointer]:
+            - /url: /folder/1
+          - link "디자인" [ref=f3e17] [cursor=pointer]:
+            - /url: /folder/2
+          - link "뉴스" [ref=f3e20] [cursor=pointer]:
+            - /url: /folder/3
+          - link "유튜브" [ref=f3e23] [cursor=pointer]:
+            - /url: /folder/4
+          - link "참고자료" [ref=f3e26] [cursor=pointer]:
+            - /url: /folder/5
+      - main [ref=f3e29]:
+        - generic [ref=f3e30]:
+          - heading "개발" [level=2] [ref=f3e31]
+          - paragraph [ref=f3e32]: 저장된 링크 4개
+        - generic [ref=f3e33]:
+          - article [ref=f3e34]:
+            - generic [ref=f3e35]:
+              - generic [ref=f3e36]: nextjs.org
+              - generic [ref=f3e38]: 개발
+            - generic [ref=f3e39]:
+              - heading "Next.js 공식 문서" [level=3] [ref=f3e40]
+              - paragraph [ref=f3e41]: Next.js 앱 라우터와 서버 컴포넌트에 대한 공식 가이드
+            - link "https://nextjs.org/docs" [ref=f3e42] [cursor=pointer]:
+              - /url: https://nextjs.org/docs
+          - article [ref=f3e43]:
+            - generic [ref=f3e44]:
+              - generic [ref=f3e45]: tailwindcss.com
+              - generic [ref=f3e47]: 개발
+            - generic [ref=f3e48]:
+              - heading "Tailwind CSS" [level=3] [ref=f3e49]
+              - paragraph [ref=f3e50]: 유틸리티 퍼스트 CSS 프레임워크로 빠르게 UI를 구축하세요
+            - link "https://tailwindcss.com" [ref=f3e51] [cursor=pointer]:
+              - /url: https://tailwindcss.com
+          - article [ref=f3e52]:
+            - generic [ref=f3e53]:
+              - generic [ref=f3e54]: vercel.com
+              - generic [ref=f3e56]: 개발
+            - generic [ref=f3e57]:
+              - heading "Vercel" [level=3] [ref=f3e58]
+              - paragraph [ref=f3e59]: 프론트엔드 앱을 빠르게 배포하는 플랫폼
+            - link "https://vercel.com" [ref=f3e60] [cursor=pointer]:
+              - /url: https://vercel.com
+          - article [ref=f3e61]:
+            - generic [ref=f3e62]:
+              - generic [ref=f3e63]: github.com
+              - generic [ref=f3e65]: 개발
+            - generic [ref=f3e66]:
+              - heading "GitHub" [level=3] [ref=f3e67]
+              - paragraph [ref=f3e68]: 오픈 소스 소프트웨어 개발 및 협업 플랫폼
+            - link "https://github.com" [ref=f3e69] [cursor=pointer]:
+              - /url: https://github.com
+  - button "Open Next.js Dev Tools" [ref=f3e75] [cursor=pointer]
