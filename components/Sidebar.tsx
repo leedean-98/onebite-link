@@ -8,32 +8,21 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-56 shrink-0 border-r border-zinc-200 bg-white dark:bg-zinc-950 dark:border-zinc-800 flex flex-col gap-1 p-3">
+    <aside className="app-sidebar w-56 shrink-0 bg-[var(--card-bg)] flex flex-col p-3">
       <Link
         href="/"
-        className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold transition-colors ${
-          pathname === "/"
-            ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50"
-            : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50"
+        className={`sidebar-link flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm ${
+          pathname === "/" ? "sidebar-link-active" : "text-[var(--text-sub)]"
         }`}
       >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6h16.5M3.75 12h16.5M3.75 18h16.5"
-          />
+        <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6h16.5M3.75 12h16.5M3.75 18h16.5" />
         </svg>
-        All
+        전체
       </Link>
-      <div className="mt-2 flex flex-col gap-0.5">
-        <p className="px-3 py-1 text-xs font-medium text-zinc-400 uppercase tracking-wider">
+
+      <div className="mt-4 flex flex-col gap-0.5">
+        <p className="px-3 pb-1.5 text-xs font-semibold text-[var(--placeholder)] uppercase tracking-widest">
           폴더
         </p>
         {folders.map((folder) => {
@@ -43,19 +32,11 @@ export default function Sidebar() {
             <Link
               key={folder.id}
               href={href}
-              className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${
-                isActive
-                  ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 font-semibold"
-                  : "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-50"
+              className={`sidebar-link flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm ${
+                isActive ? "sidebar-link-active" : "text-[var(--text-sub)]"
               }`}
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
