@@ -8,7 +8,7 @@ export type LinkItem = {
 };
 
 export type Folder = {
-  id: string;
+  id: number;
   name: string;
 };
 

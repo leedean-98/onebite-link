@@ -5,12 +5,12 @@ import { useFolders } from "@/lib/FolderContext";
 
 export default function NewFolderModal({ onClose }: { onClose: () => void }) {
   const [name, setName] = useState("");
-  const { addFolder } = useFolders();
+  const { addFolder, isAdding } = useFolders();
 
-  function handleSave() {
+  async function handleSave() {
     const trimmed = name.trim();
     if (!trimmed) return;
-    addFolder(trimmed);
+    await addFolder(trimmed);
     onClose();
   }
 
@@ -42,10 +42,10 @@ export default function NewFolderModal({ onClose }: { onClose: () => void }) {
           </button>
           <button
             onClick={handleSave}
-            disabled={!name.trim()}
+            disabled={!name.trim() || isAdding}
             className="btn-primary px-4 py-2 rounded-xl text-sm font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            저장
+            {isAdding ? "저장 중..." : "저장"}
           </button>
         </div>
       </div>
