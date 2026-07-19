@@ -3,7 +3,7 @@
 import { useLinks } from "@/lib/LinkContext";
 
 type Props = {
-  linkId: string;
+  linkId: number;
   linkTitle: string;
   onClose: () => void;
 };

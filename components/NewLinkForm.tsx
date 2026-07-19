@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useFolders } from "@/lib/FolderContext";
 import { useLinks } from "@/lib/LinkContext";
+import { createClient } from "@/utils/supabase/client";
 
 export default function NewLinkForm() {
   const router = useRouter();
@@ -17,7 +18,7 @@ export default function NewLinkForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!url || !folderId) return;
+    if (!url || !folderId || loading) return;
 
     setLoading(true);
     setError("");
@@ -26,14 +27,21 @@ export default function NewLinkForm() {
       const res = await fetch(`/api/og?url=${encodeURIComponent(url)}`);
       const og = await res.json();
 
-      addLink({
-        id: Date.now().toString(),
-        url: og.url || url,
-        title: og.title || url,
-        description: og.description || "",
-        thumbnail: og.image || "",
-        folderId,
-      });
+      const supabase = createClient();
+      const { data, error: dbError } = await supabase
+        .from("links")
+        .insert({
+          url: og.url || url,
+          title: og.title || url,
+          description: og.description || null,
+          thumbnail_url: og.image || null,
+          folder_id: Number(folderId),
+        })
+        .select()
+        .single();
+
+      if (dbError) throw dbError;
+      if (data) addLink(data);
 
       router.push("/");
     } catch {

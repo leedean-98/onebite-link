@@ -14,14 +14,14 @@ export default function EditLinkModal({ link, onClose }: Props) {
   const { updateLink } = useLinks();
   const { folders } = useFolders();
 
-  const [folderId, setFolderId] = useState(link.folderId);
-  const [title, setTitle] = useState(link.title);
-  const [description, setDescription] = useState(link.description);
+  const [folderId, setFolderId] = useState(link.folder_id?.toString() ?? "");
+  const [title, setTitle] = useState(link.title ?? "");
+  const [description, setDescription] = useState(link.description ?? "");
 
   function handleSave() {
     if (!title.trim()) return;
     updateLink(link.id, {
-      folderId,
+      folder_id: folderId ? Number(folderId) : null,
       title: title.trim(),
       description: description.trim(),
     });
@@ -46,6 +46,7 @@ export default function EditLinkModal({ link, onClose }: Props) {
             onChange={(e) => setFolderId(e.target.value)}
             className="input-field rounded-xl px-4 py-2.5 text-sm text-[var(--text)] appearance-none cursor-pointer"
           >
+            <option value="">폴더 없음</option>
             {folders.map((folder) => (
               <option key={folder.id} value={folder.id}>
                 {folder.name}

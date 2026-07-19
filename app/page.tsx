@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import LinkGrid from "@/components/LinkGrid";
+import LinksPageHeader from "@/components/LinksPageHeader";
 
 export default function Home() {
   return (
@@ -9,10 +10,7 @@ export default function Home() {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
         <main className="flex-1 overflow-y-auto p-6">
-          <div className="mb-6">
-            <h2 className="text-xl font-bold text-[var(--text)]">전체 링크</h2>
-            <p className="mt-1 text-sm text-[var(--text-sub)]">저장된 링크 8개</p>
-          </div>
+          <LinksPageHeader />
           <LinkGrid />
         </main>
       </div>

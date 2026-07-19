@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { type LinkItem } from "@/lib/data";
-import { folders } from "@/lib/data";
+import { useFolders } from "@/lib/FolderContext";
 import DeleteLinkModal from "./DeleteLinkModal";
 import EditLinkModal from "./EditLinkModal";
 
 export default function LinkCard({ link }: { link: LinkItem }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
-  const folderName = folders.find((f) => f.id === link.folderId)?.name ?? "";
+  const { folders } = useFolders();
+  const folderName = folders.find((f) => f.id === link.folder_id)?.name ?? "";
 
   const hostname = (() => {
     try {
@@ -43,10 +44,10 @@ export default function LinkCard({ link }: { link: LinkItem }) {
           </button>
         </div>
 
-        {link.thumbnail && (
+        {link.thumbnail_url && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={link.thumbnail}
+            src={link.thumbnail_url}
             alt=""
             className="w-full h-36 object-cover"
           />
@@ -64,9 +65,11 @@ export default function LinkCard({ link }: { link: LinkItem }) {
               />
               <span className="text-xs text-[var(--text-sub)] truncate">{hostname}</span>
             </div>
-            <span className="shrink-0 rounded-lg bg-[var(--badge-bg)] px-2.5 py-1 text-xs font-medium text-[var(--accent)]">
-              {folderName}
-            </span>
+            {folderName && (
+              <span className="shrink-0 rounded-lg bg-[var(--badge-bg)] px-2.5 py-1 text-xs font-medium text-[var(--accent)]">
+                {folderName}
+              </span>
+            )}
           </div>
 
           <div className="flex-1">
@@ -95,9 +98,8 @@ export default function LinkCard({ link }: { link: LinkItem }) {
       {showDeleteModal && (
         <DeleteLinkModal
           linkId={link.id}
-          linkTitle={link.title}
-          onClose={() => setShowDeleteModal(false)}
-        />
+          linkTitle={link.title ?? ""}
+          onClose={() => setShowDeleteModal(false)} />
       )}
     </>
   );

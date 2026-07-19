@@ -1,32 +1,41 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
-import { links as initialLinks, LinkItem } from "./data";
+import { createContext, useContext, useEffect, useState } from "react";
+import { LinkItem } from "./data";
+import { createClient } from "@/utils/supabase/client";
 
 type LinkContextType = {
   links: LinkItem[];
   addLink: (link: LinkItem) => void;
-  deleteLink: (id: string) => void;
-  updateLink: (id: string, patch: Partial<Pick<LinkItem, "folderId" | "title" | "description">>) => void;
+  deleteLink: (id: number) => void;
+  updateLink: (id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) => void;
 };
 
 const LinkContext = createContext<LinkContextType | null>(null);
 
 export function LinkProvider({ children }: { children: React.ReactNode }) {
-  const [links, setLinks] = useState<LinkItem[]>(initialLinks);
+  const [links, setLinks] = useState<LinkItem[]>([]);
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase
+      .from("links")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .then(({ data }) => {
+        if (data) setLinks(data);
+      });
+  }, []);
 
   function addLink(link: LinkItem) {
     setLinks((prev) => [link, ...prev]);
   }
 
-  function deleteLink(id: string) {
+  function deleteLink(id: number) {
     setLinks((prev) => prev.filter((l) => l.id !== id));
   }
 
-  function updateLink(
-    id: string,
-    patch: Partial<Pick<LinkItem, "folderId" | "title" | "description">>
-  ) {
+  function updateLink(id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) {
     setLinks((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
   }
 

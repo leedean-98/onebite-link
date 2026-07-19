@@ -3,10 +3,10 @@
 import { useLinks } from "@/lib/LinkContext";
 import LinkCard from "./LinkCard";
 
-export default function LinkGrid({ folderId }: { folderId?: string }) {
+export default function LinkGrid({ folderId }: { folderId?: number }) {
   const { links } = useLinks();
-  const filtered = folderId
-    ? links.filter((link) => link.folderId === folderId)
+  const filtered = folderId !== undefined
+    ? links.filter((link) => link.folder_id === folderId)
     : links;
 
   return (
