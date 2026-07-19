@@ -8,7 +8,7 @@ type LinkContextType = {
   links: LinkItem[];
   addLink: (link: LinkItem) => void;
   deleteLink: (id: number) => void;
-  updateLink: (id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) => void;
+  updateLink: (id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) => Promise<void>;
 };
 
 const LinkContext = createContext<LinkContextType | null>(null);
@@ -35,7 +35,9 @@ export function LinkProvider({ children }: { children: React.ReactNode }) {
     setLinks((prev) => prev.filter((l) => l.id !== id));
   }
 
-  function updateLink(id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) {
+  async function updateLink(id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) {
+    const supabase = createClient();
+    await supabase.from("links").update(patch).eq("id", id);
     setLinks((prev) => prev.map((l) => (l.id === id ? { ...l, ...patch } : l)));
   }
 

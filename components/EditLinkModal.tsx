@@ -18,9 +18,9 @@ export default function EditLinkModal({ link, onClose }: Props) {
   const [title, setTitle] = useState(link.title ?? "");
   const [description, setDescription] = useState(link.description ?? "");
 
-  function handleSave() {
+  async function handleSave() {
     if (!title.trim()) return;
-    updateLink(link.id, {
+    await updateLink(link.id, {
       folder_id: folderId ? Number(folderId) : null,
       title: title.trim(),
       description: description.trim(),
