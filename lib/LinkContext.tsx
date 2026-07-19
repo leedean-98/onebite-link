@@ -7,7 +7,7 @@ import { createClient } from "@/utils/supabase/client";
 type LinkContextType = {
   links: LinkItem[];
   addLink: (link: LinkItem) => void;
-  deleteLink: (id: number) => void;
+  deleteLink: (id: number) => Promise<void>;
   updateLink: (id: number, patch: Partial<Pick<LinkItem, "folder_id" | "title" | "description">>) => Promise<void>;
 };
 
@@ -31,7 +31,9 @@ export function LinkProvider({ children }: { children: React.ReactNode }) {
     setLinks((prev) => [link, ...prev]);
   }
 
-  function deleteLink(id: number) {
+  async function deleteLink(id: number) {
+    const supabase = createClient();
+    await supabase.from("links").delete().eq("id", id);
     setLinks((prev) => prev.filter((l) => l.id !== id));
   }
 
